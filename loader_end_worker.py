@@ -231,7 +231,7 @@ def process_batch(conn) -> Tuple[int, Set[Tuple[str, str]]]:
                 log.info("No eligible tunnel rows this cycle.")
                 return 0, touched_pairs
 
-            cur.execute("SELECT NOW() AS now_ts")
+            cur.execute("SELECT NOW()::timestamp AS now_ts")
             now_ts = cur.fetchone()["now_ts"]
 
             log.info("Fetched %s tunnel rows", len(rows))
